@@ -5,6 +5,35 @@ This uses machine learning, and background subtraction with OpenCV all on a litt
 
 See the whole build, tips, tricks and comments at: https://bloggerbrothers.com/2017/12/09/turn-on-a-lamp-with-a-gesture-ir-cam-image-processing/
 
+## Updated Version
+- Updated to Python 3
+- Updated to Open CV 4
+- Updated to push spell casting to MQTT
+- Fixed bug with image recognition when mulitple Contours found - uses largest one
+
+# Additional Steps
+- Install MQTT broker (Mosquitto) sudo apt-get install mosquitto
+-- https://www.instructables.com/id/Installing-MQTT-BrokerMosquitto-on-Raspberry-Pi/
+- Install Python Client https://pypi.org/project/paho-mqtt/
+-- sudo pip install paho-mqtt
+- Install & Compile OpenCV4
+-- https://www.alatortsev.com/2018/11/21/installing-opencv-4-0-on-raspberry-pi-3-b/
+
+Then:
+
+Create password file mosquitto.password
+mosquitto_passwd -b 
+	username: wandtracker password: whateveryouchoose
+	username: spellactor password: whateveryouchoose
+
+Then Start Mosquitto
+start.sh
+Run the WandTracker
+python3 trained.py -p whateveryouchoose
+
+
+# Original Usage Instructions Below
+
 ## The simplest way to get started:
 - Create a fresh raspbian disk with the Desktop OS
 - Follow install instructions to get OpenCV 3.1
