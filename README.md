@@ -13,24 +13,31 @@ See the whole build, tips, tricks and comments at: https://bloggerbrothers.com/2
 
 # Additional Steps
 - Install MQTT broker (Mosquitto) sudo apt-get install mosquitto
--- https://www.instructables.com/id/Installing-MQTT-BrokerMosquitto-on-Raspberry-Pi/
+	- https://www.instructables.com/id/Installing-MQTT-BrokerMosquitto-on-Raspberry-Pi/
+	- You will want to stop / kill the default instance running (sudo systemctl (enable. | disable) mosquitto)
 - Install Python Client https://pypi.org/project/paho-mqtt/
--- sudo pip install paho-mqtt
+	- sudo pip install paho-mqtt
 - Install & Compile OpenCV4
--- https://www.alatortsev.com/2018/11/21/installing-opencv-4-0-on-raspberry-pi-3-b/
+	- https://www.alatortsev.com/2018/11/21/installing-opencv-4-0-on-raspberry-pi-3-b/
 
 Then:
 
 Create password file mosquitto.password
-mosquitto_passwd -b 
-	username: wandtracker password: whateveryouchoose
-	username: spellactor password: whateveryouchoose
+```
+	mosquitto_passwd -b 
+		username: wandtracker password: whateveryouchoose
+		username: spellactor password: whateveryouchoose
+```
 
 Then Start Mosquitto
-start.sh
-Run the WandTracker
-python3 trained.py -p whateveryouchoose
+	start.sh
 
+Run the WandTracker
+```
+	python3 trained.py -p whateveryouchoose
+```
+
+Cast your spells as before - this time there will be a JSON message published on to the 'spell' topic which can then be listened to by an alternative process.
 
 # Original Usage Instructions Below
 
